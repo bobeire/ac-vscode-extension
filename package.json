@@ -1,0 +1,72 @@
+{
+  "name": "autonomous-compiler-bridge",
+  "displayName": "AutonomousCompiler Bridge",
+  "description": "Bridge AI-generated code into the AutonomousCompiler filesystem and trigger ac commands directly from VS Code.",
+  "version": "0.1.0",
+  "publisher": "robert",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bobeire/ac-vscode-extension.git"
+  },
+  "homepage": "https://github.com/bobeire/ac-vscode-extension",
+  "bugs": {
+    "url": "https://github.com/bobeire/ac-vscode-extension/issues"
+  },
+  "categories": [
+    "Other",
+    "Programming Languages",
+    "Productivity"
+  ],
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onCommand:acBridge.applyJson",
+    "onCommand:acBridge.applySelection",
+    "onCommand:acBridge.runAcExportZip",
+    "onCommand:acBridge.runAcGithubPush"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "acBridge.applyJson",
+        "title": "AutonomousCompiler: Apply JSON to Filesystem"
+      },
+      {
+        "command": "acBridge.applySelection",
+        "title": "AutonomousCompiler: Apply Selection as File"
+      },
+      {
+        "command": "acBridge.runAcExportZip",
+        "title": "AutonomousCompiler: ac export zip"
+      },
+      {
+        "command": "acBridge.runAcGithubPush",
+        "title": "AutonomousCompiler: ac github push"
+      }
+    ],
+    "configuration": {
+      "properties": {
+        "acBridge.baseDir": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to your AutonomousCompiler project directory."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/vscode": "^1.90.0",
+    "@types/node": "^22.0.0"
+  }
+}
